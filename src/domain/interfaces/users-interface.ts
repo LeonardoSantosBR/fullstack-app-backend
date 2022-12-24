@@ -4,5 +4,5 @@ export interface IGetUsersRepository {
   getUsers(): Promise<User[]>;
 }
 export interface IPostUsersRepository {
-  getExample(): Promise<User[]>;
+  postUsers(): Promise<User[]>;
 }

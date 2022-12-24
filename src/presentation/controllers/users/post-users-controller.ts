@@ -6,7 +6,7 @@ export class PostUsersControllers implements Controller {
 
   async handle() {
     try {
-      const users = await this.postUsersRepository.getExample();
+      const users = await this.postUsersRepository.postUsers();
       return {
         statusCode: 200,
         body: users,

@@ -1,5 +1,5 @@
 import { Controller } from "../../protocols/controller";
-import { IPostUsersRepository } from "../../../domain/interfaces/users/post-user-interface";
+import { IPostUsersRepository } from "../../../domain/interfaces/users-interface";
 
 export class PostUsersControllers implements Controller {
   constructor(private readonly postUsersRepository: IPostUsersRepository) {}

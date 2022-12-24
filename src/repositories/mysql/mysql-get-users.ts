@@ -1,4 +1,4 @@
-import { IGetUsersRepository } from "../../domain/interfaces/users/get-user-interface";
+import { IGetUsersRepository } from "../../domain/interfaces/users-interface";
 import { User } from "../../models/user";
 
 export class MySqlGetUsersRepository implements IGetUsersRepository {

@@ -1,10 +1,11 @@
 import express from "express";
 import { config } from "dotenv";
+import { router } from "./routes/user-routes/routes";
 
 config();
-export const App = express();
-const port = process.env.PORT || 8000;
 
-App.listen(port, () => {
-  console.log(`--LISTENING ON PORT ${port}--`);
-});
+const app = express();
+app.use(express.json());
+app.use(router);
+
+export { app };

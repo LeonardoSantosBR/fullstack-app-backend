@@ -1,12 +1,15 @@
-import { Entity } from "../../core/domain/entity";
-import { UserProps } from "../../models/user.model";
+import { uuid } from "uuidv4";
 
-export class User extends Entity<UserProps> {
-  private constructor(props: UserProps, id?: string) {
-    super(props, id);
-  }
-  static create(props: UserProps, id?: string){
-    const user= new User(props)
-    return user;
+export class User {
+  public readonly id: string;
+  public name: string;
+  public email: string;
+  public password: string;
+
+  constructor(props: Omit<User, "id">, id?: string) {
+    Object.assign(this, props);
+    if (!id) {
+      this.id = uuid();
+    }
   }
 }

@@ -3,7 +3,7 @@ import { createUserController } from "../../app/usecases/create-user";
 
 const router = Router();
 
-router.post("/users", (request, response) => {
+router.post("/post/users", (request, response) => {
   return createUserController.handle(request, response);
 });
 

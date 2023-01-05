@@ -6,15 +6,29 @@ export class CreateUserController {
 
   async handle(request: Request, response: Response): Promise<Response> {
     try {
-      const { name, email, password } = request.body;
-      
-      await this.createUserUseCase.create({
-        name,
+      const {
         email,
-        password
+        nome,
+        cpf,
+        dataNascimento,
+        telefone,
+        celular,
+        senha,
+        confirmarSenha,
+      } = request.body;
+
+      await this.createUserUseCase.create({
+        email,
+        nome,
+        cpf,
+        dataNascimento,
+        telefone,
+        celular,
+        senha,
+        confirmarSenha,
       });
 
-      return response.status(201).send("deu bom");
+      return response.status(201).send(request.body);
     } catch (error) {
       return response.status(400).json({
         message: error.message || "erro inesperado",

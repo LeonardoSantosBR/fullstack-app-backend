@@ -5,7 +5,7 @@ export class User {
   public email: string;
   public nome: string;
   public cpf: string;
-  public dataNascimento: Date;
+  public dataNascimento: string;
   public telefone?: string;
   public celular: string;
   public senha: string;

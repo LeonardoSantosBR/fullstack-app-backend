@@ -2,7 +2,7 @@ export interface createUserDTO {
   email: string;
   nome: string;
   cpf: string;
-  dataNascimento: Date;
+  dataNascimento: string;
   telefone?: string;
   celular: string;
   senha: string;

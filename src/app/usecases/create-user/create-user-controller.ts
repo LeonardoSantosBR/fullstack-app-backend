@@ -15,7 +15,7 @@ export class CreateUserController {
         celular,
         senha,
         confirmarSenha,
-      } = request.body;
+      } = request.body.fields;
 
       await this.createUserUseCase.create({
         email,

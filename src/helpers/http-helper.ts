@@ -1,45 +1,44 @@
-import { HttpResponse } from '../protocols/http'
+//import { HttpResponse } from "../protocols/http";
 
-import { ServerError } from '../errors/server-error'
-import { UnauthorizedError } from '../errors/unauthorized-error'
+import { ServerError } from "../errors/server-error";
+import { UnauthorizedError } from "../errors/unauthorized-error";
 
-export const badRequest = (error: Error): HttpResponse => ({
+export const badRequest = (error: Error) => ({
   statusCode: 400,
-  body: error
-})
+  body: error,
+});
 
-export const forbidden = (error: Error): HttpResponse => ({
+export const forbidden = (error: Error) => ({
   statusCode: 403,
-  body: error
-})
+  body: error,
+});
 
-export const unauthorized = (): HttpResponse => ({
+export const unauthorized = () => ({
   statusCode: 401,
-  body: new UnauthorizedError()
-})
+  body: new UnauthorizedError(),
+});
 
-export const unauthorizedInform = (error): HttpResponse => ({
+export const unauthorizedInform = (error) => ({
   statusCode: 401,
-  body: { message: error }
-})
+  body: { message: error },
+});
 
-export const serverError = (error: Error): HttpResponse => ({
+export const serverError = (error: Error) => ({
   statusCode: 500,
-  body: new ServerError(error.stack)
-})
+  body: new ServerError(error.stack),
+});
 
-export const ok = (data: any): HttpResponse => ({
+export const sucess = (data: any) => ({
   statusCode: 200,
-  body: data
-})
+  body: data,
+});
 
-export const noContent = (): HttpResponse => ({
+export const noContent = () => ({
   statusCode: 204,
-  body: null
-})
+  body: null,
+});
 
-
-export const notFound = (data: any): HttpResponse => ({
+export const notFound = (data: any) => ({
   statusCode: 404,
-  body: data
-})
+  body: data,
+});

@@ -1,4 +1,6 @@
 import { User } from "../../../domain/entities/user";
+import { serverError, sucess } from "../../../helpers";
+
 import { UsersRepository } from "../../repositories/userRepository";
 import { createUserDTO } from "./create-user.dto";
 
@@ -6,16 +8,20 @@ export class CreateUserUseCase {
   constructor(private usersRepository: UsersRepository) {}
 
   async create(data: createUserDTO) {
-    const userAlreadyExists= this.usersRepository.findByEmail(data.email)
+    try {
+      /*const userAlreadyExists = this.usersRepository.verifyUser(data.email);
 
-    if(!userAlreadyExists || userAlreadyExists === undefined){
-      throw new Error("USUÁRIO INDEFINIDO")
+      if (!userAlreadyExists || userAlreadyExists === undefined) {
+        throw new Error("USUÁRIO INDEFINIDO");
+      }*/
+
+      const user = new User(data);
+      
+      await this.usersRepository.saveUser(user);
+
+      return sucess(user);
+    } catch (error: any) {
+      return serverError(error);
     }
-
-    const user= new User(data)
-
-    console.log(user)
-
-    await this.usersRepository.saveUser(user)
   }
 }

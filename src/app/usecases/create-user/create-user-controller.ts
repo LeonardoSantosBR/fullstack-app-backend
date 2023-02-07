@@ -19,7 +19,6 @@ export class CreateUserController {
       }: createUserDTO = request.body.values;
 
       const reqValue = request.body.values;
-
       let camposVazios = 0;
       for (const key in reqValue) {
         // eslint-disable-next-line no-prototype-builtins
@@ -27,11 +26,14 @@ export class CreateUserController {
           camposVazios++;
         }
       }
-
-      if (camposVazios > 0) {
+      if (camposVazios === 1) {
         return response
           .status(500)
-          .send(`existem ${camposVazios} campos que estão vazios.`);
+          .send(`existem ${camposVazios} campo que estão vazios.`);
+      } else if (camposVazios > 1) {
+        return response
+          .status(500)
+          .send(`existe ${camposVazios} campos que estão vazios.`);
       }
 
       await this.createUserUseCase.create({
